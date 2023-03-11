@@ -1,25 +1,30 @@
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
- 
-public interface JiraActivationRepository extends JpaRepository<JiraActivation, Long> { 
- 
-    public JiraActivation findByCredentials(String username, String password, String url);
+@Repository
+public class JiraActivationRepository {
+        
+    public void activateJira(String username, String password, String jiraUrl) {
+        // Validate the Jira credentials through a Java API that hits the Jira API
+        boolean credentialsValid = validateCredentials(username, password, jiraUrl);
+        
+        if (credentialsValid) {
+            // Use the Jira provided endpoint to authenticate the user and return the response
+            authenticateUser(username, password, jiraUrl);
+        } else {
+            // Display an error message if the provided Jira credentials are invalid
+            showErrorMessage();
+        }
+    }
     
-    public boolean validateCredentials(String username, String password, String url);
+    public boolean validateCredentials(String username, String password, String jiraUrl) {
+        // Code to validate Jira credentials
+    }
+        
+    public void authenticateUser(String username, String password, String jiraUrl) {
+        // Code to use the Jira provided endpoint to authenticate the user and return the response
+    }
     
-    public boolean authenticateUser(String username, String password, String url);
-    
-    public void displayErrorMessage();
-    
-    public boolean featureImplementedAndTested();
-    
-    public boolean validateAuthenticationProcess();
-    
-    public boolean validateErrorMessage();
-    
-    public boolean codeReviewed();
-    
-    public boolean codeCheckedInRepository();
- 
+    public void showErrorMessage() {
+        // Code to display an error message if the provided Jira credentials are invalid
+    }
 }
