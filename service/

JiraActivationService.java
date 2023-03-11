@@ -1,32 +1,27 @@
 
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 @Service
 public class JiraActivationService {
-
-    private static final String JIRA_API_ENDPOINT = "https://jira.endpoint.com/api";
-
-    public void activateJira(String username, String password, String jiraUrl) {
-        // Validate the user credentials against the JIRA API
-        RestTemplate restTemplate = new RestTemplate();
-        String response = restTemplate.getForObject(JIRA_API_ENDPOINT + "/validate/" + username + "/" + password, String.class);
-        
-        // If the response was valid, then proceed with activation
-        if (response.equals("valid")) {
-            // Make API call to JIRA API to activate the user account
-            String activationResponse = restTemplate.getForObject(JIRA_API_ENDPOINT + "/activate/" + username + "/" + password + "/" + jiraUrl, String.class);
-            
-            // If the response was valid, then the activation was successful.
-            if (activationResponse.equals("success")) {
-                System.out.println("Jira activation successful");
-            } else {
-                System.out.println("Jira activation failed");
-            }
-        } else {
-            System.out.println("Invalid Jira credentials");
-        }
+ 
+    // Method to prompt user to enter Jira credentials
+    public void promptUserForJiraCredentials(){
+        // Code to prompt user for Jira credentials
     }
 
+    // Method to validate the provided Jira credentials using JAVA API to hit Jira API
+    public boolean validateJiraCredentials(String username, String password, String url){
+        // Code to validate the Jira credentials using JAVA API to hit Jira API
+        return true; // return true if validation is successful
+    }
+
+    // Method to authenticate the user using Jira provided endpoint
+    public boolean authenticateUser(String username, String password){
+        // Code to authenticate the user using Jira provided endpoint
+        return true; // return true if authentication is successful
+    }
+
+    // Method to display an error message if Jira credentials are invalid
+    public void displayErrorMessage(){
+        // Code to display an error message if Jira credentials are invalid
+    }
 }
