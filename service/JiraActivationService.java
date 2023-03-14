@@ -1,18 +1,16 @@
 @Service
 public class JiraActivationService {
-    private final JiraService jiraService;
-
-    public JiraActivationService(JiraService jiraService) {
-        this.jiraService = jiraService;
+    
+    public boolean validateJiraCredentials(String username, String password, String jiraUrl) {
+        // Validate the provided Jira credentials through a JAVA API that hits the Jira API.
+        // Return true if credentials are valid, false otherwise.
     }
-
-    public boolean activateJira(String username, String password, String jiraUrl) {
-        boolean isValidCredentials = jiraService.validateJiraCredentials(username, password, jiraUrl);
-        if (isValidCredentials) {
-            jiraService.authenticateUser(username, password, jiraUrl);
-            return true;
-        } else {
-            return false;
-        }
+     
+    public String authenticateUser(String username, String password, String jiraUrl) {
+        // Use the Jira provided endpoint to authenticate the user and return the response.
+    }
+     
+    public void displayErrorMessage() {
+        // Display an error message if the provided Jira credentials are invalid.
     }
 }
